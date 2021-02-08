@@ -6,14 +6,14 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 15:51:08 by manmarti          #+#    #+#             */
-/*   Updated: 2021/02/01 16:23:23 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/02/08 12:07:05 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-static int        ft_wordcount(char *s, char c)
+static int		ft_wordcount(char *s, char c)
 {
 	int i;
 	int j;
@@ -22,35 +22,18 @@ static int        ft_wordcount(char *s, char c)
 	j = 0;
 	while (s[j])
 	{
-		if (s[j] == c)
-		{
+		while (s[j] == c && s[j])
+			s[j++] = 0;
+		if (s[j] != c && s[j])
 			i++;
-			while (s[j] == c)
-				s[j++] = 0;
-		}
-		j++;
+		while (s[j] != c && s[j])
+			j++;
 	}
 	return (i);
 }
 
-char            **ft_split(char const *s, char c)
+static int		ft_creator(char **buff, char *aux, int j, int i)
 {
-	char    **buff;
-	char    *aux;
-	char    *aux_aux;
-	int        i;
-	int        j;
-
-  
-	if (!(aux = malloc(sizeof(char) * (j = 1 + ft_strlen(s)))))
-		return (0);
-	aux_aux = aux;
-	ft_strlcpy(aux, s, j);
-	ft_strtrim(aux, c);
-	i = ft_wordcount(aux, c) + 2;
-	j = 0;
-	if (!(buff = (char **)malloc(sizeof(char *) * i)))
-		return (0);
 	while (j < i - 1)
 	{
 		while (!*aux)
@@ -59,16 +42,33 @@ char            **ft_split(char const *s, char c)
 			return (0);
 		ft_strlcpy(buff[j++], aux, ft_strlen(aux) + 1);
 		while (*aux)
-		  aux++;
-		aux++;
-		
+			aux++;
 	}
-	buff[j] = 0;
-	free(aux_aux);
-	return (buff);
+	return (1);
 }
 
-int main()
+char			**ft_split(char const *s, char c)
 {
-	printf("%s",ft_split("Hello world", " ")[1]);
+	char	**buff;
+	char	*aux;
+	char	*aux_aux;
+	int		i;
+	int		j;
+
+	if (!s)
+		return (0);
+	j = 1 + ft_strlen(s);
+	if (!(aux = malloc(sizeof(char) * j)))
+		return (0);
+	aux_aux = aux;
+	ft_strlcpy(aux, s, j);
+	i = ft_wordcount(aux, c) + 1;
+	j = 0;
+	if (!(buff = (char **)malloc(sizeof(char *) * i)))
+		return (0);
+	if (!ft_creator(buff, aux, j, i))
+		return (0);
+	buff[i - 1] = 0;
+	free(aux_aux);
+	return (buff);
 }
