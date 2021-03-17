@@ -6,7 +6,7 @@
 #    By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 17:43:16 by manmarti          #+#    #+#              #
-#    Updated: 2021/02/08 12:12:31 by manmarti         ###   ########.fr        #
+#    Updated: 2021/02/08 17:01:22 by manmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ clean:
 fclean: clean
 	/bin/rm -f ${NAME}
 
-bonus: $(OBJS) ${BONUS_OBJS}
-	ar -rc $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus: ${BONUS_OBJS}
+	ar -rc $(NAME) $(BONUS_OBJS)
 
 re: fclean all

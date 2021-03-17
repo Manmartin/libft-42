@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 13:27:54 by manmarti          #+#    #+#             */
-/*   Updated: 2021/02/05 19:23:33 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/02/09 14:13:49 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static char		*clear_str(const char *str, int start, int end)
 	i = 0;
 	if (end < 0)
 	{
-		new_str = malloc(sizeof(char));
+		if (!(new_str = malloc(sizeof(char))))
+			return (0);
 		new_str[0] = '\0';
 		return (new_str);
 	}
