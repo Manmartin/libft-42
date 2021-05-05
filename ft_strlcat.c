@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 16:07:52 by manmarti          #+#    #+#             */
-/*   Updated: 2021/01/26 19:14:56 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/04/27 11:07:12 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dst_size)
 {
-	size_t write_point;
-	size_t i;
+	size_t	write_point;
+	size_t	i;
 
 	i = 0;
 	if (dst_size <= ft_strlen(dst))

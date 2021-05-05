@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:30:10 by manmarti          #+#    #+#             */
-/*   Updated: 2021/02/05 11:54:36 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/04/27 10:41:34 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *aux;
+	t_list	*aux;
 
 	if (lst)
 	{

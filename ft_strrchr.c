@@ -6,13 +6,13 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:51:08 by manmarti          #+#    #+#             */
-/*   Updated: 2021/01/26 19:59:20 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/04/27 11:09:28 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*s++)

@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:02:58 by manmarti          #+#    #+#             */
-/*   Updated: 2021/02/04 16:09:39 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/04/27 10:40:19 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	intlen(long int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (n < 0)
@@ -30,7 +30,7 @@ static int	intlen(long int n)
 	return (i + 1);
 }
 
-char		*ft_itoa(int nb)
+char	*ft_itoa(int nb)
 {
 	int			size;
 	int			sign;
@@ -40,7 +40,8 @@ char		*ft_itoa(int nb)
 	n = nb;
 	sign = 1;
 	size = intlen(n);
-	if (!(str = malloc(sizeof(char) * size)))
+	str = malloc(sizeof(char) * size);
+	if (!str)
 		return (0);
 	str[--size] = '\0';
 	if (n < 0)
@@ -50,6 +51,9 @@ char		*ft_itoa(int nb)
 		str[size] = (n * sign) % 10 + '0';
 		n /= 10;
 	}
-	str[0] = (sign < 0 ? '-' : n % 10 + '0');
+	if (sign < 0)
+		str[0] = '-';
+	else
+		str[0] = n % 10 + '0';
 	return (str);
 }

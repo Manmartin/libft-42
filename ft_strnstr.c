@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 19:29:14 by manmarti          #+#    #+#             */
-/*   Updated: 2021/02/05 13:09:52 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/04/27 11:16:33 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			j++;
 			if (!needle[j] && i + j <= len)
 				return ((char *)&haystack[i]);
-			continue;
+			continue ;
 		}
 		j = 0;
 		i++;

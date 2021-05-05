@@ -6,16 +6,16 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 13:27:54 by manmarti          #+#    #+#             */
-/*   Updated: 2021/02/09 14:13:49 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/04/27 11:12:30 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-static int		ft_isin(const char letter, const char *keys)
+static int	ft_isin(const char letter, const char *keys)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (keys[i])
@@ -26,7 +26,7 @@ static int		ft_isin(const char letter, const char *keys)
 	return (0);
 }
 
-static char		*clear_str(const char *str, int start, int end)
+static char	*clear_str(const char *str, int start, int end)
 {
 	char	*new_str;
 	int		i;
@@ -34,12 +34,14 @@ static char		*clear_str(const char *str, int start, int end)
 	i = 0;
 	if (end < 0)
 	{
-		if (!(new_str = malloc(sizeof(char))))
+		new_str = malloc(sizeof(char));
+		if (!new_str)
 			return (0);
 		new_str[0] = '\0';
 		return (new_str);
 	}
-	if (!(new_str = malloc(sizeof(char) * ((end - start) + 2))))
+	new_str = malloc(sizeof(char) * ((end - start) + 2));
+	if (!new_str)
 		return (0);
 	while (start <= end)
 		new_str[i++] = str[start++];
@@ -47,7 +49,7 @@ static char		*clear_str(const char *str, int start, int end)
 	return (new_str);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		first_char;
 	int		last_char;
@@ -63,7 +65,10 @@ char			*ft_strtrim(char const *s1, char const *set)
 	i--;
 	while (i && ft_isin(s1[i], set))
 		i--;
-	last_char = (ft_isin(s1[0], set) && i == 0 ? -1 : i);
+	if (ft_isin(s1[0], set) && i == 0)
+		last_char = -1;
+	else
+		last_char = i;
 	i = 0;
 	while (ft_isin(s1[i], set))
 		i++;
